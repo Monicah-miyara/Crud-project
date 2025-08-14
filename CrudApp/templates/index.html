@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #c3e4ff, #eaf6ff);
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #004f91;
+    }
+    .wrapper {
+      background-color: #ffffff;
+      padding: 60px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #0077cc;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+    .login-btn {
+      background-color: #0077cc;
+      color: #fff;
+      padding: 15px 32px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .login-btn:hover {
+      background-color: #005fa3;
+      transform: scale(1.05);
+    }
+    .wave {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="wave">🌊</div>
+    <h1>Hello, Welcome Aboard!</h1>
+    <a href="{% url 'login_user' %}"><button class="login-btn">Login 💙</button></a>
+    <a href="{% url 'register' %}"><button class="login-btn">Register 💙</button></a>
+
+  </div>
+</body>
+</html>
+
+
+

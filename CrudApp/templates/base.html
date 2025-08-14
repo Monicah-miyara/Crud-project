@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+  body {
+    background: linear-gradient(135deg, #c3e4ff, #eaf6ff);
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background-color: #0077cc !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand,
+  .nav-link,
+  .nav-item span {
+    color: #ffffff !important;
+    font-weight: 500;
+  }
+
+  .nav-link:hover {
+    color: #bde5ff !important;
+    text-decoration: underline;
+  }
+
+  .container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+</style>
+
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">TechStart</a>
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+              <span>Welcome {{user.username}}</span>
+             <li class="nav-item">
+          <a class="nav-link" href="{% url 'student_list' %}">Student list</a>
+        </li>
+          {% if user.is_staff %}
+               <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_student' %}">Add student</a>
+        </li>
+          {% endif%}
+             <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout_user' %}">Logout</a>
+        </li>
+
+        <li class="nav-item">
+          {% else %}
+
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'login_user' %}">Home</a>
+        </li>
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'login_user' %}">Login</a>
+        </li>
+          {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<div class="container mt-5">
+    {% block content %}
+    {% endblock %}
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>
